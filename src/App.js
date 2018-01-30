@@ -1,32 +1,14 @@
 import React, { Component, Fragment } from 'react';
-import {debounce} from 'lodash';
+import Widget from './Widget';
 
-class Widget extends Component{
-  state = {text: ''};
+class App extends Component{
 
-  handleChange = debounce(text => {
-    this.setState({text});
-  }, 1000);
-
-  componentWillUnmount() {
-    this.handleChange.cancel();
-  }
-
-  render() {
-    return (
-      <Fragment>
-        <input type="text" onChange={e => this.handleChange(e.target.value)}/>
-        <textarea value={this.state.text} />
-      </Fragment>
-    )
-  }
-}
-
-class App extends Component {
   state = {show: false};
+
   handleClick = () => {
     this.setState(prevState => ({show: !prevState.show}));
   };
+
   render() {
     return (
       <Fragment>
